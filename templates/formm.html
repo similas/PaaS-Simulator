@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+body, html {
+  height: 100%;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.bg-img {
+  /* The image used */
+  background-image: url("../static/images/pic.jpg");
+
+  min-height: 880px;
+
+  /* Center and scale the image nicely */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+}
+
+.text-block {
+  position: absolute;
+  bottom: 700px;
+  right: 1100px;
+  background-color: black;
+  color: white;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+/* Add styles to the form container */
+.container {
+  position: absolute;
+  right: 0;
+  margin: 20px;
+  max-width: 300px;
+  padding: 16px;
+  background-color: white;
+}
+
+/* Full-width input fields */
+input[type=text], input[type=password] {
+  width: 100%;
+  padding: 15px;
+  margin: 5px 0 22px 0;
+  border: none;
+  background: #f1f1f1;
+}
+
+input[type=text]:focus, input[type=password]:focus {
+  background-color: #ddd;
+  outline: none;
+}
+
+/* Set a style for the submit button */
+.btn {
+  background-color: #4CAF50;
+  color: white;
+  padding: 16px 20px;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  opacity: 0.9;
+}
+
+.btn:hover {
+  opacity: 1;
+}
+</style>
+</head>
+<body>
+
+
+<div class="bg-img">
+
+  <div class="text-block">
+    <h1>PaaS Simulator</h1>
+  </div>
+
+  <form method="POST" class="container">
+
+    <label for="usrname"><b>Remote's username</b></label>
+    <input type="text" placeholder="Enter Username " name="usrname" required>
+
+    <label for="ipadd"><b>Remote's IP Address</b></label>
+    <input type="text" placeholder="Enter IP " name="ipadd" required>
+
+    <label for="package"><b>Package</b></label><br><br>
+    <select id="selectBox" onchange="changeFunc();" name="package">
+    <option value="Nodejs">Nodejs</option>
+    <option value="java">java</option>
+    <option value="nginx">nginx</option>
+    <option value="apache">apache</option>
+    <option value="mysql">mysql</option>
+    <option value="postgresql">postgresql</option>
+  </select><br><br>
+
+    <h2>NginX Parameters<h2>
+    <h4>Git Remote's URL<h4><input type="text" placeholder="URL" name="giturl">
+    Git Remote's Username Address<input type="text" placeholder="Username" name="gitusrname"><br>
+    Git Remote's Password<input type="password" placeholder="Password" name="gitpass"><br>
+
+    <button type="submit" class="btn">Submit</button>
+  </form>
+</div>
+
+
+<script type="text/javascript">
+
+function changeFunc() {
+var selectBox = document.getElementById("selectBox");
+var selectedValue = selectBox.options[selectBox.selectedIndex].value;
+if (selectedValue == "nginx"){
+  alert("Please Fill out NginX parameters");
+} 
+}
+
+</script>
+
+</body>
