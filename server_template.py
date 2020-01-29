@@ -1,6 +1,6 @@
 # Using flask to make an api 
 # import necessary libraries and functions 
-from flask import Flask, jsonify, request ,render_template
+from flask import Flask, jsonify, request ,render_template,redirect
 import json
 import subprocess
   
@@ -11,6 +11,22 @@ app = Flask(__name__)
 @app.route('/form')
 def my_form():
     return render_template('formm.html')
+
+
+@app.route('/login')
+def login():
+    return render_template('login.html')
+
+
+@app.route('/login', methods=['GET', 'POST'])
+def loginpage():
+  usrname = request.form.get('usrname')
+  passw = request.form.get('passw')
+  if usrname=="ali" and passw == "123":
+    return redirect("/form", code=302)
+  else:
+    return redirect("/login", code=302)
+
 
 @app.route('/form', methods=['GET', 'POST']) #allow both GET and POST requests
 def form_example():
